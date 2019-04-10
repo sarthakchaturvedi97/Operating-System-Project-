@@ -46,7 +46,6 @@ void main()
             process_queue[i].st = 0;
             bt = bt + process_queue[i].bt;
       }
-
       Arrival_Time_Sorting();
       process_queue[9].prt = -9999;
       printf("\nProcess Name\tArrival Time\tBurst Time\tPriority\tWaiting Time");
@@ -69,4 +68,8 @@ void main()
             tat = tat + process_queue[largest].at;
             printf("\n%c\t\t%d\t\t%d\t\t%d\t\t%d", process_queue[largest].prn, process_queue[largest].at, process_queue[largest].bt, process_queue[largest].prt, process_queue[largest].wt);
       }
-  
+      awt = wt/ limit;
+      avgt = tat / limit;
+      printf("\n\nAverage waiting time:\t%f\n", avgt);
+      printf("Average Turnaround Time:\t%f\n", avgt);
+}
