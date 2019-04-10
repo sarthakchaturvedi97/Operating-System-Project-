@@ -1,70 +1,27 @@
 #include<stdio.h>
-#include<conio.h>
-#include<stdlib.h>  
-int main()
-    {
-            int i,sm,j,sm2,sm3,n,sm4,t,c=0;
-            printf("Enter number of process \n");
-             scanf("%d",&n);
-             int ar1[n];
-             int ar[n];
-             int ar2[n];
-             int ar3[n];
-             int ar4[n];
-            for(i=0;i<n;i++)
+struct process
+{
+      char prn;
+      int at, bt, ct, wt, tt, prt;
+      int st;
+}process_queue[10];
+
+int limit;
+
+void Arrival_Time_Sorting()
+{
+      struct process temp;
+      int i, j;
+      for(i = 0; i < limit - 1; i++)
+      {
+            for(j = i + 1; j < limit; j++)
             {
-                printf("Enter arrival time,burst time and priority of the process \n");
-                scanf("%d",&ar[i]);
-                scanf("%d",&ar1[i]);
-                scanf("%d",&ar3[i]);
-                ar2[i]=i+1;
+                  if(process_queue[i].at > process_queue[j].at)
+                  {
+                        temp = process_queue[i];
+                        process_queue[i] = process_queue[j];
+                        process_queue[j] = temp;
+                  }
             }
-            
-            
-           printf("Enter time quantum for the process");
-           scanf("%d",&t);
-            for(i=0;i<n;i++)
-            {
-                for(j=i+1;j<n-i-1;j++)
-                {
-                    if(ar3[j]<ar3[j+1])
-                    {
-                        sm=ar[j+1];
-                        ar[j+1]=ar[j];
-                        ar[j]=sm;
-                        sm2=ar1[j+1];
-                        ar1[j+1]=ar1[j];
-                        ar1[j]=sm2;
-                        sm3=ar2[j+1];
-                        ar2[j+1]=ar2[j];
-                        ar2[j]=sm3;
-                        sm4=ar3[j+1];
-                        ar3[j+1]=ar3[j];
-                        ar3[j]=sm;
-                    }
-                  
-                }
-            }
-        while(c!=n)
-		{
-			
-           for(i=0;i<n;i++)
-            {
-                 if(ar1[i]>t)
-                {
-                  ar1[i]-=t;
-                  printf("Process %d time left is %d \n",ar2[i],ar1[i]);
-                }
-                 else
-                {
-                 	if(ar1[i]!=0)
-                    {
-                
-                     printf("Process %d is completed \n",ar2[i]);
-                     ar1[i]=0;
-                     ++c;
-					}
-                }
-            }  
-		}
-    }      
+      }
+}
