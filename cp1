@@ -19,6 +19,25 @@ int main()
                 scanf("%d",&ar1[i]);
                 
             }
+           for(i=0;i<n;i++)
+            {
+                for(j=0;j<n-i-1;j++)
+                {
+                    if(ar[j]>ar[j+1])
+                    {
+                        sm=ar[j+1];
+                        ar[j+1]=ar[j];
+                        ar[j]=sm;
+                        sm2=ar1[j+1];
+                        ar1[j+1]=ar1[j];
+                        ar1[j]=sm2;
+                        sm3=ar2[j+1];
+                        ar2[j+1]=ar2[j];
+                        ar2[j]=sm3;
+                    }
+                  
+                }
+            }
            
 
 
