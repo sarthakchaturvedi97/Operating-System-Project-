@@ -46,3 +46,27 @@ void main()
             process_queue[i].st = 0;
             bt = bt + process_queue[i].bt;
       }
+
+      Arrival_Time_Sorting();
+      process_queue[9].prt = -9999;
+      printf("\nProcess Name\tArrival Time\tBurst Time\tPriority\tWaiting Time");
+      for(time = process_queue[0].at; time < bt;)
+      {
+            largest = 9;
+            for(i = 0; i < limit; i++)
+            {
+                  if(process_queue[i].at <= time && process_queue[i].st != 1 && process_queue[i].prt > process_queue[largest].prt)
+                  {
+                        largest = i;
+                  }
+            }
+            time = time + process_queue[largest].bt;
+            process_queue[largest].ct = time;
+            process_queue[largest].wt = process_queue[largest].ct - process_queue[largest].at - process_queue[largest].bt;
+            process_queue[largest].at = process_queue[largest].ct - process_queue[largest].at;
+            process_queue[largest].st = 1;
+            wt = wt + process_queue[largest].wt;
+            tat = tat + process_queue[largest].at;
+            printf("\n%c\t\t%d\t\t%d\t\t%d\t\t%d", process_queue[largest].prn, process_queue[largest].at, process_queue[largest].bt, process_queue[largest].prt, process_queue[largest].wt);
+      }
+  
